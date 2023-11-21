@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Exo d'Algo(Part 4) - #01 - Les élèves</title>
     <link href="./css/style.css" rel="stylesheet" />
-    <!-- script type="text/javascript" src="./js/eleve.js"></script -->
+    <script type="text/javascript" src="./js/Eleve.js"></script>
 </head>
 <body>
 <div class="card">
@@ -59,11 +59,88 @@
 
     
 <script type="text/javascript">
+
     let groupeEleves = [];
+    let sommes = 0;
+    let count =0;
 
-    // YOUR CODE HERE
+    let pierre = new Eleve ("Dupond", "Pierre", "Kercode");
+        pierre.bonjour();
+        console.log(pierre.firstname);
+
+    let marie = new Eleve ("Fontaine", "Marie", "CDA");
+
+        console.log(marie.course);
+
+        marie.notes.maths.push(12);
+
+    let john = new Eleve ("Hunter", "John", "CDUI");
+
+        john.notes.maths.push(14);
+        
+    groupeEleves.push(pierre, marie, john);
+
+    for(let i =0; i < groupeEleves.length; i++){
+
+        groupeEleves[i].notes.algorithmique.push(randomNumber());
+
+    }
+
+    // Autre solution sur l'attribution aléatoire des notes
+    /* groupeEleves.forEach (eleve => {eleve.notes.algorithmique.push(rabdomNumber)}) */
+
+    for(let i =0; i < groupeEleves.length; i++){
+        for( j=0; j<groupeEleves[i].notes.algorithmique.length; j++){
+            sommes += parseFloat(groupeEleves[i].notes.algorithmique[j]);
+            count++;
+        }
+    }
+    console.log(`La moyenne du groupe en algo est : ${(sommes/count).toFixed(2)}`);
+
+    console.log(groupeEleves);
+    console.log(count);
+    console.log(sommes);
+
     
+    john.addNote("algorithmique", 16.5);
 
+
+   /*   groupeEleves.forEach(function (algorithmique) { //Le tableau + forEach qui recupere les élements
+            
+        sommes += algorithmique;
+        resultat = sommes /algorithmique.length;
+    
+    });
+    
+        return resultat;
+    */
+
+    /*
+    let eleve1 = {
+        prenom : "Pierre",
+        nom : "Dupont",
+        classe : "Kercode",
+    }
+
+    let eleve2 = {
+        prenom : "Marie",
+        nom : "Fontaine",
+        classe : "CDA",
+    }
+    
+    let eleve3 = {
+        prenom : "John",
+        nom : "Hunter",
+        classe : "CDUI",
+    }
+
+    let groupeEleves = [eleve1, eleve2, eleve3];
+
+    console.log(groupeEleves)
+    console.log(eleve1)
+    console.log(eleve2)
+    console.log(eleve3)
+    */
 </script>
 </body>
 </html>
